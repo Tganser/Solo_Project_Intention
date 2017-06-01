@@ -25,5 +25,13 @@
     "passport-google": "^0.3.0",
     "passport-google-oauth": "^1.0.0",
     "passport-google-oauth2": "^0.1.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tganser/prime_mean_passport_google_auth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tganser/prime_mean_passport_google_auth/issues"
+  },
+  "homepage": "https://github.com/Tganser/prime_mean_passport_google_auth#readme"
 }

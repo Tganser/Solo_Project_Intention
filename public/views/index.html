@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Google Server-Side Auth Example</title>
+<head>
+    <title>Intention</title>
     <script src="/public/vendors/angular.min.js"></script>
     <script src="/public/vendors/angular-route.min.js"></script>
     <script src="/public/scripts/app.js"></script>
@@ -11,14 +11,32 @@
     <script src="/public/scripts/controllers/calendarController.js"></script>
     <link rel="stylesheet" type="text/css" href="/public/vendors/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/public/vendors/skeleton.css" />
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="vendors/angular.min.js" charset="utf-8"></script>
+    <script src="vendors/nv.d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.5/angular-nvd3.min.js"></script>
+    <!-- <script src="vendors/angular.min.js" charset="utf-8"></script> -->
+    <script src="vendors/angular-route.min.js" charset="utf-8"></script>
+    <script src="scripts/client.js" charset="utf-8"></script>
+    <script src="scripts/controllers/HomeController.js" charset="utf-8"></script>
+    <script src="scripts/controllers/WeekController.js" charset="utf-8"></script>
+    <script src="scripts/controllers/IntentController.js" charset="utf-8"></script>
+    <script src="scripts/controllers/LoginController.js" charset="utf-8"></script>
+    <script src="scripts/intentions-service.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <base href="/">
+</head>
   <body>
     <!-- Bring in the Angular app -->
     <main class="container" ng-app="theGoogles">
       <!-- NavController is on every page -->
       <header ng-controller="NavController as nav">
-        <h1>How can I get my Google Calender???</h1>
-        <nav>
+        <div class="container">
+                <h1>Intention</h1>
+            </div>        <nav>
           <ul class="row">
             <li class="two columns"><a href="#home">Home</a></li>
             <li class="two columns"><a href="#calendar">Calendar</a></li>
