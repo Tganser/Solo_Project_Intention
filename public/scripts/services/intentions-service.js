@@ -1,4 +1,4 @@
-myApp.service('IntentionsService', function($http){
+googleAuthApp.service('IntentionsService', function($http){
 
 this.addIntention = function(thing, thing2){
   console.log("in add intention function!");

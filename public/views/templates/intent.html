@@ -1,0 +1,29 @@
+<div class = "container" ng-init = "ic.updateIntention()">
+  <h2>Intentions (Title)</h2>
+
+  <h3>Create:</h3>
+  <input type="text" value="" ng-model="ic.newInput" placeholder="new intention">
+   Hours: <select ng-model = "ic.hours" name="hours">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  </select>
+  <button ng-click="ic.addIntention(ic.newInput)"> Submit </button>
+  <button ng-click="ic.updateIntention()"> Update </button>
+
+  <h3>Progress:</h3>
+  <div ng-repeat = "thing in ic.myIntentions" class = "container intentions">
+      {{thing.name}}
+      Important? {{thing.starred}}
+      <button type="button" ng-click="ic.starIntention(thing)">Star</button>
+    <button type="button" ng-click="ic.removeIntention(thing)">Remove</button>
+    <nvd3 options="ic.options" data="ic.data"></nvd3>
+  </div>
+</div>

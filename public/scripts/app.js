@@ -1,6 +1,8 @@
 var googleAuthApp = angular.module('theGoogles', ['ngRoute']);
 
-googleAuthApp.config(['$routeProvider', function ($routeProvider) {
+// googleAuthApp.config(function ($routeProvider,  $locationProvider)
+googleAuthApp.config(['$routeProvider', function ($routeProvider)
+{
 
   $routeProvider
     .when('/calendar', {
@@ -13,8 +15,21 @@ googleAuthApp.config(['$routeProvider', function ($routeProvider) {
       controller: 'AuthController',
       controllerAs: 'auth',
     })
+    .when('/intentions', {
+    templateUrl: '/public/views/templates/intent.html',
+    controller: 'IntentController',
+    controllerAs: 'ic',
+    })
+  //   .when('/week', {
+  //   templateUrl: 'views/viz.html',
+  //   controller: 'WeekController as wc'
+  // })
     .otherwise({
       redirectTo: 'login',
     });
-},
+
+    // $locationProvider.html5Mode(true);
+}
+
+
 ]);
