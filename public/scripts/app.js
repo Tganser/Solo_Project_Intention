@@ -20,6 +20,11 @@ googleAuthApp.config(['$routeProvider', function ($routeProvider)
     controller: 'IntentController',
     controllerAs: 'ic',
     })
+    .when('/week',{
+      templateUrl: '/public/views/templates/viz.html',
+      controller: 'WeekController',
+      controllerAs: 'wc',
+    })
   //   .when('/week', {
   //   templateUrl: 'views/viz.html',
   //   controller: 'WeekController as wc'
