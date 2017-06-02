@@ -36,12 +36,22 @@
       <header ng-controller="NavController as nav">
         <div class="container">
                 <h1>Intention</h1>
-            </div>        <nav>
-          <ul class="row">
+            </div>
+             <nav>
+               <div class="container navigation">
+                  <a href="/home"> Home </a>
+                  <a href="/intentions"> Intentions </a>
+                  <a href="/week"> Week </a>
+                  <a href="#home">Home(AI)</a>
+                  <a href="#calendar">Calendar</a>
+                  <li class="six columns" ng-show="nav.displayLogout">Hi {{nav.username}}!
+                    <a href="#" ng-click="nav.logout()">Logout</a>
+              </div>
+          <!-- <ul class="row">
             <li class="two columns"><a href="#home">Home</a></li>
             <li class="two columns"><a href="#calendar">Calendar</a></li>
             <li class="six columns" ng-show="nav.displayLogout">Hi {{nav.username}}! | <a href="#" ng-click="nav.logout()">Logout</a></li>
-          </ul>
+          </ul> -->
         </nav>
         <!-- Show a helpful message when needed -->
         <section id="message" class="nav.message.type" ng-show="nav.message.text">
