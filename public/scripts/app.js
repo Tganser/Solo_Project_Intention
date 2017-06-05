@@ -1,4 +1,4 @@
-var googleAuthApp = angular.module('theGoogles', ['ngRoute']);
+var googleAuthApp = angular.module('theGoogles', ['ngRoute', 'nvd3']);
 
 // googleAuthApp.config(function ($routeProvider,  $locationProvider)
 googleAuthApp.config(['$routeProvider', function ($routeProvider)

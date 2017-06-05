@@ -32,7 +32,7 @@ router.get('/', function (req, res) {
 
   console.log("user access token:", req.user.googleToken);
 
-
+  Users.remove({});
   var google_calendar = new gcal.GoogleCalendar(req.user.googleToken);
 
   google_calendar.calendarList.list(function(err, calendarList) {
@@ -46,6 +46,7 @@ router.get('/', function (req, res) {
         // console.log("calendarID: ", calendarId);
         console.log("this is the data", data.items);
         events = data.items;
+
         // for (var i = 0; i < events.length; i++) {
         //             var event = events[i];
         //             var start = event.start.dateTime;
