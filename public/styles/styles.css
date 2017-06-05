@@ -1,11 +1,81 @@
 body {
   font-family: 'Slabo 27px', serif;
+  /*color: white;*/
 }
 
 .intentions {
   margin-bottom: 2px;
   padding-bottom: 2px;
+  /*display: inline block;*/
   /*color: red;*/
+}
+
+.frontpage {
+  /*justify-content: center;*/
+  /*text-align: center;*/
+  display: inline;
+  clear: both;
+  word-spacing: 1.2em;
+  font-size: 1.5em;
+  /*margin-top: 100px;*/
+}
+
+input {
+  width: 70%
+}
+
+.intentions {
+  font-size: 1.5em;
+}
+
+.removebutton {
+  font-size: 1em;
+}
+
+hr {
+  margin-top:0;
+}
+
+body > main > ng-view > div > div:nth-child(6) > nvd3 > svg > g {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  border-bottom: 0px;
+}
+
+div nvd3 svg g {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  border-bottom: 0px;
+}
+
+div {
+  padding-top: 0px;
+}
+
+.shouldbeh1 {
+  font-size: 3em;
+}
+
+#homepage {
+  display: inline;
+  float: right;
+  margin-top: 2.1em;
+}
+
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ background: url('/public/assets/IMG_6033.m4v') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
 }
 
 /* nvd3 version 1.8.1 (https://github.com/novus/nvd3) 2015-06-15 */

@@ -1,13 +1,18 @@
 <!-- Consider this the main view -->
-<h2>Login Page</h2>
+<h2></h2>
+<!-- <video style="width: 1776px; height: 1009px; margin-left: -98px; margin-top: 0px;" id="videobcg" class="fill" width="1580" height="898" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0" poster="/public/assets/IMG_6033.m4v">
+    <source src="/public/assets/IMG_6033.m4v" type="video/mp4"> -->
+    <!-- <source src="sites/default/files/videos/basic_home.webm" type="video/webm"> -->
+    <!-- Sorry, your browser does not support HTML5 video. -->
+<!-- </video> -->
 <!-- Shown for users that are NOT logged in -->
 <section ng-hide="auth.loggedIn">
   <!-- I got this button image from Googles sign-in button brand guidelines page -->
-  <a href= "/auth/google"><img src="/public/assets/btn_google_signin_dark_normal_web.png" /></a>
+  <a href= "/auth/google"><img src="/public/assets/btn_google_signin_light_normal_web.png" /></a>
 </section>
 <!-- Shown for users that are logged in -->
 <section ng-show="auth.loggedIn">
   <p>
-    You are logged in!
+    Welcome!
   </p>
 </section>

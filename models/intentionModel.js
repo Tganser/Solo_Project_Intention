@@ -5,7 +5,7 @@ var intentionSchema = new Schema({
   name : String,
   hours: String,
   dateadded : Date,
-  starred: Boolean
+  starred: Boolean,
 });
 
 var Intentions = mongoose.model('intentions', intentionSchema); // intentions is the collection name

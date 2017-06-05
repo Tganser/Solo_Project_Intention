@@ -11,9 +11,11 @@ this.addIntention = function(thing, thing2){
     starred: false
   };
 
+  console.log(intentionToSend);
+
   return $http({
     method: 'POST',
-    url : '/addIntentions',
+    url : '/private/addIntentions',
     data: intentionToSend
   }).then(function(response){
     console.log("made it to the .then");
@@ -27,7 +29,7 @@ this.removeIntention = function(thing){
   removeId = thing._id;
   return $http({
      method: 'DELETE',
-     url: '/removeIntention',
+     url: '/private/removeIntention',
      params: { id: removeId }
    }).then(function(response) {
      console.log(response);
@@ -36,16 +38,25 @@ this.removeIntention = function(thing){
 
 };
 
-this.starIntention = function(thing){
-  console.log("in star intention function!");
-  console.log(thing);
-};
+// this.starIntention = function(thing){
+//   console.log("in star intention function!");
+//   console.log(thing);
+//   updateId = thing._id;
+//   return $http({
+//      method: 'UPDATE',
+//      url: '/private/updateIntention',
+//      params: { id: updateId }
+//    }).then(function(response) {
+//      console.log(response);
+//      return response;
+//    });
+// };
 
 this.updateIntentions = function(){
   console.log("in update intentions on");
   return $http({
     method: 'GET',
-    url: '/allIntentions'
+    url: '/private/allIntentions'
   }).then(function(response){
     console.log("response from server in get intentions: ", response.data);
     return response.data;
