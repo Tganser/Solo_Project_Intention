@@ -8,7 +8,8 @@ googleAuthApp.controller('CalendarController', function ($http) {
       if (response.data.err) {
         _this.data = 'Sorry, you are not logged in!';
       } else {
-        _this.data = response.data.message;
+        _this.data = response;
+        console.log(response);
       }
     });
 });
