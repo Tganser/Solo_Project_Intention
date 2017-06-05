@@ -25,10 +25,6 @@ googleAuthApp.config(['$routeProvider', function ($routeProvider)
       controller: 'WeekController',
       controllerAs: 'wc',
     })
-  //   .when('/week', {
-  //   templateUrl: 'views/viz.html',
-  //   controller: 'WeekController as wc'
-  // })
     .otherwise({
       redirectTo: 'login',
     });
