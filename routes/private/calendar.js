@@ -28,52 +28,85 @@ var allevents = [];
 * @see {@link https://developers.google.com/google-apps/calendar/v3/reference/#Calendars}
 *
 */
+// date functions
+			Date.prototype.getWeek = function(start)	{
+				start = start || 0;
+				var today = new Date(this.setHours(0, 0, 0, 0));
+				var day = today.getDay() - start;
+				var date = today.getDate() - day;
+
+				var StartDate = new Date(today.setDate(date));
+				var EndDate = new Date(today.setDate(date + 6));
+				return [StartDate, EndDate];
+			};
+			// set Dates to the start & end days of the week
+			var Dates = new Date().getWeek();
+
+// calculate today's date
+			var today = new Date();
+			today = today.toISOString();
+
+
 router.get('/', function (req, res) {
 
   console.log("user access token:", req.user.googleToken);
 
   Users.remove({});
   var google_calendar = new gcal.GoogleCalendar(req.user.googleToken);
+  var calendarId;
 
-  google_calendar.calendarList.list(function(err, calendarList) {
-    if(err){
-      console.log("Error:", err);
-    } else {
-      // console.log("calendar list", calendarList);
-      calendarId = calendarList.items[0].id;
-      // console.log("first calendar id:", calendarId);
-      google_calendar.events.list(calendarId, function(err, data) {
+  var params = {
+            timeMin: Dates[0].toISOString(),
+            timeMax: Dates[1].toISOString(),
+            maxResults: 50,
+            singleEvents: true,
+            orderBy: 'startTime'
+  };
+
+  // google_calendar.calendarList.list(function(err, calendarList) {
+  //   if(err){
+  //     console.log("Error:", err);
+  //   } else {
+  //     // console.log("calendar list", calendarList);
+  //     calendarId = calendarList.items[0].id;
+  //     // makeApiCall();
+  //     console.log("first calendar id:", calendarId);
+      google_calendar.events.list('primary', params, function(err, data) {
         // console.log("calendarID: ", calendarId);
-        console.log("this is the data", data.items);
+        console.log("how many events? ", data.items.length);
+        // console.log("this is the data", data.items);
         events = data.items;
-
-        // for (var i = 0; i < events.length; i++) {
-        //             var event = events[i];
-        //             var start = event.start.dateTime;
-        //             var end = event.end.dateTime;
-        //             var eventorganizer = event.organizer.email;
-        //             var eventStatus = event.status;
-        //             // console.log('%s - %s', start, event.summary); || event.start.date;;
-        //             var eventSum = event.summary;
-        //
-        //             var eventObject = {
-        //               name: eventSum,
-        //               starttime: start,
-        //               endtime: end,
-        //               organizer: eventorganizer,
-        //               status: eventStatus
-        //             };
-        //
-        //             var newEvent = CalendarData(eventObject);
-        //             newEvent.save().then( function(){
-        //               // console.log("done")
-        //             });
-      //  }
 
       res.send(events);
     });
-  }
-});
+// });
+
+function makeApiCall() {
+				// gapi.client.load('calendar', 'v3', function() {				// load the calendar api (version 3)
+					var request = google_calendar.events.list({
+						'calendarId':	calendarId,	// calendar ID
+						'maxResults':	20,									// show max of 20 events
+						'singleEvents':	true,								// split recurring events into individual events
+						'timeMin':		today,								// start showing events starting at today
+						'timeMax':		Dates[1],							// end showing events this week (saturday)
+						'orderBy':		'startTime'							// order events by their start time
+					}).then(function(){
+            console.log("request:", request);
+          });
+
+
+					// handle the response from our api call
+					// request.execute(function(resp) {
+					// 	for (var i = 0; i < resp.items.length; i++) {		// loop through events and write them out to a list
+					// 		var li = document.createElement('li');
+					// 		var eventInfo = resp.items[i].summary + ' ' +resp.items[i].start.dateTime;
+					// 		li.appendChild(document.createTextNode(eventInfo));
+					// 		document.getElementById('events').appendChild(li);
+					// 	}
+					// });
+				// );
+			}
+
 });
 //
 // Date.prototype.getWeek = function(start) {
