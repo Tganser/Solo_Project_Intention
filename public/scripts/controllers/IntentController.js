@@ -10,8 +10,10 @@ googleAuthApp.controller('IntentController', function(IntentionsService, $scope)
     vm.addIntention = function(newInput, hours){
       IntentionsService.addIntention(newInput, hours);
       IntentionsService.updateIntentions().then(function(data){
-        vm.myIntentions = data;});
+        vm.myIntentions = data;
         createData(vm.myIntentions);
+      });
+
     };
 
     vm.removeIntention = function(thing){

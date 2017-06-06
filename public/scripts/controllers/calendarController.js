@@ -16,41 +16,81 @@ googleAuthApp.controller('CalendarController', function ($http) {
         console.log(response.data);
         console.log("eventdata: ", eventdata);
         // myevents = cleanup(eventdata);
-        builddata(eventdata);
-        buildViz(eventdata);
+        removeCancels(eventdata);
+        removeAllDayEvents(eventdata);
+        // console.log(eventdata);
+        array1 = calculateDuration(eventdata);
+        // builddata(eventdata);
+        buildViz(array1);
+
         // narrowDates(myevents);
       }
     });
 
-var builddata = function(anarray){
+var removeCancels = function(anarray) {
+    console.log("initial length: ", anarray.length);
+    for (var i = 0; i < anarray.length; i++) {
+        if (anarray[i].status === "cancelled") {
+            anarray.splice(i, 1);
+        }
+        console.log("total events: ", anarray.length);
+        return anarray;
+    }
+};
 
+var removeAllDayEvents = function(anarray) {
+    console.log("initial events: ", anarray.length);
+    for (var i = 0; i < anarray.length; i++) {
+        // if ('date' in anarray[i].start) {
+        //     anarray.splice(anarray[i], 1);
+        //     console.log("removed:", anarray[i]);
+        // }
+        // console.log(anarray[i].summary, anarray[i].transparency);
 
-  for (var i = 0; i < 6; i++) {
+        if (anarray[i].transparency === "transparent"){
+          anarray.splice(i, 1);
+          // console.log("removed due to transparency:", anarray[i]);
+        }
+    }
+    console.log("getting rid of all day events: ", anarray.length);
+    for (var i = 0; i < anarray.length; i++) {
+      if ('date' in anarray[i].start){
+        console.log("all day event?", anarray[i].start);
+        anarray.splice(i, 1);
+      }
+    }
+    console.log(anarray);
+    return anarray;
+};
+
+var calculateDuration = function(anarray){
+  for (var i = 0; i < anarray.length; i++) {
+
     var event1 = anarray[i].summary;
     a = new Date(anarray[i].end.dateTime);
-    console.log(a);
     b = new Date(anarray[i].start.dateTime);
-    console.log(a.getTime());
+    // console.log(a.getTime());
     var event1time = parseInt((a.getTime() - b.getTime())/3600000);
     console.log(event1 + " "  + event1time);
     eventObject = {
       name: event1,
       time: event1time
     };
-    newArray.push(eventObject);
-  }
-  console.log(newArray);
+    // if (isNaN(eventObject)){
+    //   console.log(eventObject.time, "is not a number - all day event?");
+    // }
+    // else {
 
+    newArray.push(eventObject);
+    // }
+    // newArray.push(eventObject);
+  }
+  console.log("newArray:", newArray);
+  return newArray;
 };
 
 
 
-
-  // for (var i = 0; i < anarray.length; i++) {
-  //   if (anarray[1].summary === anarray[2].summary){
-  //     anarray
-  //   }
-  // }
 
 
 var buildViz = function(anarray){
