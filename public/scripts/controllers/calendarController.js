@@ -18,12 +18,11 @@ googleAuthApp.controller('CalendarController', function ($http) {
         // myevents = cleanup(eventdata);
         removeCancels(eventdata);
         removeAllDayEvents(eventdata);
-        // console.log(eventdata);
         array1 = calculateDuration(eventdata);
-        // builddata(eventdata);
-        buildViz(array1);
+        accumulateHours(array1);
+        // buildViz(array1);
 
-        // narrowDates(myevents);
+
       }
     });
 
@@ -33,13 +32,13 @@ var removeCancels = function(anarray) {
         if (anarray[i].status === "cancelled") {
             anarray.splice(i, 1);
         }
-        console.log("total events: ", anarray.length);
+        // console.log("total events: ", anarray.length);
         return anarray;
     }
 };
 
 var removeAllDayEvents = function(anarray) {
-    console.log("initial events: ", anarray.length);
+    // console.log("initial events: ", anarray.length);
     for (var i = 0; i < anarray.length; i++) {
         // if ('date' in anarray[i].start) {
         //     anarray.splice(anarray[i], 1);
@@ -52,14 +51,14 @@ var removeAllDayEvents = function(anarray) {
           // console.log("removed due to transparency:", anarray[i]);
         }
     }
-    console.log("getting rid of all day events: ", anarray.length);
+    // console.log("getting rid of all day events: ", anarray.length);
     for (var i = 0; i < anarray.length; i++) {
       if ('date' in anarray[i].start){
         console.log("all day event?", anarray[i].start);
         anarray.splice(i, 1);
       }
     }
-    console.log(anarray);
+    // console.log(anarray);
     return anarray;
 };
 
@@ -71,7 +70,7 @@ var calculateDuration = function(anarray){
     b = new Date(anarray[i].start.dateTime);
     // console.log(a.getTime());
     var event1time = parseInt((a.getTime() - b.getTime())/3600000);
-    console.log(event1 + " "  + event1time);
+    // console.log(event1 + " "  + event1time);
     eventObject = {
       name: event1,
       time: event1time
@@ -85,11 +84,190 @@ var calculateDuration = function(anarray){
     // }
     // newArray.push(eventObject);
   }
-  console.log("newArray:", newArray);
+  // console.log("newArray:", newArray);
   return newArray;
 };
 
 
+var accumulateHours = function(anarray) {
+
+    console.log("testing begins:");
+
+
+    var nameArray = new Set();
+
+    for (var i = 0; i < anarray.length; i++) {
+        nameArray.add(anarray[i].name);
+    }
+
+    var resultArray = [];
+
+    for (var j of nameArray) {
+        console.log("this is the aset variable:", j);
+        newObject = {
+            name: j,
+            time: 0
+        }
+        console.log("new Object at start:", newObject);
+        for (var k = 0; k < anarray.length; k++) {
+            console.log()
+            if (anarray[k].name === j) {
+                console.log("match! do logic!");
+                newObject.time += anarray[k].time;
+                console.log(newObject.time);
+            }
+        }
+        console.log(newObject);
+        resultArray.push(newObject);
+    }
+    console.log("Final array: ", resultArray);
+}
+// console.log("Final array: ",resultArray);
+// }
+
+// var accumulateHours = function(anarray, aset){
+//   console.log("in the function");
+//   console.log(anarray);
+//   console.log(aset);
+//   var firstCategory = aset[0];
+//   console.log(firstCategory);
+//   if (anarray[i].name === firstCategory){
+//     console.log("match!");
+//     console.log(anarray[i].name, firstCategory);
+//   }
+// }
+//
+//
+//
+// accumulateHours(anarray, nameArray);
+
+
+
+
+//
+// //for each piece of name array, filter it!
+//
+// var accumulateHours = function(anarray, aset){
+//   console.log("in accumulate Hours");
+//   var newArray = [];
+//   for (var i = 0; i < anarray.length; i++) {
+//     console.log(anarray[i].name);
+//     var work = anarray.filter(function(el){
+//       return (el.name === "work");
+//     });
+//     // if (anarray[i].name === aset[0]){
+//     //   console.log("time:", anarray[i].time);
+//     // }
+//   }
+//   // if (anarray[i].name === aset[0]){
+//   //   console.log("time:", anarray[i].time);
+//   // }
+//
+//   // for (var i = 0; i < aset.length; i++) {
+//   //   var word = aset[i];
+//   //   console.log("word to start:" , word);
+//   //   word = anarray.filter(function(el){
+//   //     stringword = word.toString;
+//   //     return (el.name === stringWord);
+//   //   });
+//   //   newArray.push(word);
+//   // }
+//   // console.log(newArray);
+// };
+//
+// console.log(accumulateHours(anarray, nameArray));
+
+// var work = anarray.filter(function(el){
+//   return (el.name === "work");
+// });
+//
+// console.log("filtered?", work);
+//
+// var accumulateHours = function(anarray, aset){
+//   for (var i = 0; i < anarray.length; i++) {
+//     if (anarray[i].name in aset[0]){
+//       var text = anarray[i].name;
+//       console.log(text);
+//
+//     }
+//   }
+// }
+
+// accumuHours(anarray, nameArray);
+
+
+// push anarray[0] to newArary
+
+// loop through anarray check against newArray[0], if yes, accumulate hoursArray, if no
+// var hoursArray = [];
+// funfunctions(anarray, hoursArray);
+
+// var funfunctions = function(anarray){
+//   var hoursArray = [];
+//   console.log("fun functions functioning");
+//   hoursArray.push(anarray[0]);
+//   // for (var j = 0; j < hoursArray.length; j++) {
+//
+//   for (var i = 0; i < anarray.length; i++) {
+//     // var j;
+//     // j = 0;
+//     // for (var j = 0; j < hoursArray.length; i++) {
+//       if (anarray[i].name === hoursArray[j].name) {
+//         console.log("hoursarray time", hoursArray[j].time);
+//         console.log("anarray time", anarray[i].time);
+//         hoursArray[0].accumulatedTime = hoursArray[j].time + anarray[i].time;
+//         console.log("total time:", hoursArray[j].accumulatedTime);
+//         // j++;
+//       }
+//   }
+// }
+// console.log("final hours array:", hoursArray);
+// // };
+//
+// funfunctions(anarray);
+
+// hoursArray.push(anarray[0]);
+// for (var i = 0; i < anarray.length; i++) {
+//   if (anarray[i].name === hoursArray[0]) {
+//     console.log("hoursarray time", hoursArray[0].time);
+//     console.log("anarray time", anarray[i].time);
+//     hoursArray[0].accumulatedTime = hoursArray[0].time + anarray[i].time;
+//     console.log(hoursArray[0].accumulatedTime);
+//   }
+// }
+
+
+
+// var accumulateHours = function(anarray){
+//   var hoursArray = [{name:work, time: 4}];
+//   hoursArray.push(anarray[0]);
+//   console.log("hours array to start: ", hoursArray);
+//   for (var i = 0; i < anarray.length; i++) {
+//     for (var j=0; j<hoursArray.length; j++) {
+//       if (anarray[i].name === hoursArray[j].name){
+//         hoursArray[i].time
+//
+//     }
+    // if (anarray[i].name === hoursArray[0].name){
+      //accumulate hours
+      // hoursArray.push(anarray[i]);
+      //
+    // }
+
+    // if anarray[i].name = hoursArray[i].name
+      // add time
+    //else add name to array
+
+//
+//     if (anarray[i].name === hoursArray[0].name){
+//       hoursArray[0].time += anarray.time;
+//       console.log(hoursArray[0].name, hoursArray[0].time);
+//     }
+//     else {
+//       hoursArray
+//     }
+//   }
+// }
 
 
 
