@@ -10,14 +10,18 @@ var Intentions = require('../../models/intentionModel');
 
 router.post('/', function(req, res) {
   console.log('inside addProgress post');
-  progressupdate = req.body.hours;
-  console.log(progressupdate);
-  thingid = req.body._id;
-  newhours = req.body.hours - 1;
-  console.log(thingid);
+  console.log("this is the progress:", req.body.progress);
+  var progressupdate = req.body.progress + 1;
+  console.log("these are the hours: ", progressupdate);
+  var thingid = req.body._id;
+  console.log(req.body.id);
+  var newhours = req.body.progress;
+  console.log("which thing?", thingid);
 
-
-  Intentions.findOneAndUpdate({_id:thingid},{hours:newhours});
+  Intentions.findOneAndUpdate({_id:thingid},{progress:progressupdate}).then(function(data){
+    console.log(data);
+    res.send(200);
+  });
 
   // newIntention.save(function(err) {
   //   console.log('new intention .save function');

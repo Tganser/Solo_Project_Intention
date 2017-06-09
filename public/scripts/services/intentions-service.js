@@ -8,6 +8,7 @@ this.addIntention = function(thing, thing2, userthing){
     user : userthing,
     name : thing,
     hours: thing2,
+    progress: 0,
     dateadded : new Date(),
     starred: false
   };
@@ -26,11 +27,11 @@ this.addIntention = function(thing, thing2, userthing){
 
 this.addProgress = function(thing){
   console.log("in add progress function");
-  console.log("thing");
+  console.log("thing", thing);
   return $http({
     method: 'POST',
     url: '/private/addProgress',
-    body: thing
+    data: thing
   }).then(function(response){
     console.log(response);
     return response;

@@ -4,6 +4,8 @@ googleAuthApp.controller('IntentController', function(IntentionsService, $scope)
   // vm.intentions = ["goal1", "goal2", "goal3", "goal4"];
   var newInput = vm.newInput;
   var hours = vm.hours;
+  var progress = vm.progress
+
 
   // var user = session.user;
 
@@ -29,8 +31,9 @@ googleAuthApp.controller('IntentController', function(IntentionsService, $scope)
     vm.addProgress = function(thing){
       IntentionsService.addProgress(thing);
       IntentionsService.updateIntentions().then(function(data){
-        vm.myIntentions = data; });
+        vm.myIntentions = data;
         createData(vm.myIntentions);
+        });
     };
 
     vm.updateIntention = function(){
@@ -47,6 +50,7 @@ googleAuthApp.controller('IntentController', function(IntentionsService, $scope)
     };
 
     var createData = function(anarray){
+
       for (var i = 0; i < anarray.length; i++) {
 
 
@@ -60,9 +64,9 @@ googleAuthApp.controller('IntentController', function(IntentionsService, $scope)
         anarray[i].data = {
             "title": "",
             // "subtitle": "US$, in thousands",
-            "ranges": [0, 1, anarray[i].hours],
-            "measures": [0]
-            // "markers": [anarray[i].progress]
+            "ranges": [0, 0, anarray[i].hours],
+            "measures": [anarray[i].progress],
+            "markers": [anarray[i].progress]
         };
       }
     };

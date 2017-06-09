@@ -5,6 +5,7 @@ var intentionSchema = new Schema({
   user: String,
   name : String,
   hours: Number,
+  progress : Number,
   dateadded : Date,
   starred: Boolean,
 });

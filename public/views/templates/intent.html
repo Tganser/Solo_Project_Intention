@@ -23,8 +23,9 @@
 
   <h3>Current Intentions:</h3>
   <div ng-repeat = "thing in ic.myIntentions" class = "container intentions">
-      {{thing.name}}
-
+      <h2>{{thing.name}}</h2>
+      <!-- <h4>{{thing.description}}</h4> -->
+<br />
       <!-- <button type="button" ng-click="ic.starIntention(thing)">Star</button> -->
       <button type="button" ng-click="ic.addProgress(thing)" class="addprogressbutton">Add Progress</button>
       <button type="button" ng-click="ic.removeIntention(thing)" class="removebutton">Remove</button>
