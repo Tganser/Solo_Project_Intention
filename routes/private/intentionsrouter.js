@@ -21,7 +21,6 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
   console.log('inside addIntention post', req.body);
 
-
   var newIntention = new Intentions(req.body);
   console.log('newIntention ->', newIntention);
 
@@ -37,22 +36,6 @@ router.post('/', function(req, res) {
   });
 });
 
-router.post('/', function(req, res) {
-  console.log('inside addProgress post', req.body);
-  var newIntention = new Intentions(req.body);
-  console.log('newIntention ->', newIntention);
-
-  newIntention.save(function(err) {
-    console.log('new intention .save function');
-    if(err){
-      console.log(err);
-      res.sendStatus(500);
-    }else{
-      console.log('successful intention created');
-      res.sendStatus(201);
-    }
-  });
-});
 
 router.delete('/', function(req, res) {
   var intentionToDelete = req.query.id;

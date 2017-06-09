@@ -51,7 +51,6 @@ router.get('/', function (req, res) {
 
   console.log("user access token:", req.user.googleToken);
 
-  Users.remove({});
   var google_calendar = new gcal.GoogleCalendar(req.user.googleToken);
   var calendarId;
 
@@ -72,28 +71,16 @@ router.get('/', function (req, res) {
 
 });
 
-
-//this will be the route to add an intention goal to the calendar
-
-// router.post('/', function(req, res){
-//   let event = {
-//     'start': { 'dateTime': '2017-05-20T07:00:00+08:00' },
-//     'end': { 'dateTime': '2017-05-20T08:00:00+08:00' },
-//     'location': 'Coffeeshop',
-//     'summary': 'Breakfast',
-//     'status': 'confirmed',
-//     'description': '',
-//     'colorId': 1
-// };
-//
-// cal.Events.insert(calendarId, event)
-//   .then(resp => {
-//     console.log('inserted event:');
-//     console.log(resp);
-//   })
-//   .catch(err => {
-//     console.log('Error: insertEvent-' + err);
-//   });
+// router.delete('/', function(req, res) {
+// 	Users.remove({}, function(err) {
+// 		if (err) {
+// 			console.log('Error removing from database', err);
+// 			res.sendStatus(500);
+// 		} else {
+// 			console.log('successfully refreshed');
+// 			res.sendStatus(200);
+// 		}
+// 	});
 // });
 
 

@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var intentionSchema = new Schema({
+  user: String,
   name : String,
-  hours: String,
+  hours: Number,
   dateadded : Date,
   starred: Boolean,
 });

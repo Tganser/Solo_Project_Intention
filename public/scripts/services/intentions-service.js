@@ -1,10 +1,11 @@
 googleAuthApp.service('IntentionsService', function($http){
 
-this.addIntention = function(thing, thing2){
+this.addIntention = function(thing, thing2, userthing){
   console.log("in add intention function!");
   console.log(thing);
 
   var intentionToSend = {
+    user : userthing,
     name : thing,
     hours: thing2,
     dateadded : new Date(),
@@ -19,6 +20,19 @@ this.addIntention = function(thing, thing2){
     data: intentionToSend
   }).then(function(response){
     console.log("made it to the .then");
+    return response;
+  });
+};
+
+this.addProgress = function(thing){
+  console.log("in add progress function");
+  console.log("thing");
+  return $http({
+    method: 'POST',
+    url: '/private/addProgress',
+    body: thing
+  }).then(function(response){
+    console.log(response);
     return response;
   });
 };
@@ -38,22 +52,9 @@ this.removeIntention = function(thing){
 
 };
 
-// this.starIntention = function(thing){
-//   console.log("in star intention function!");
-//   console.log(thing);
-//   updateId = thing._id;
-//   return $http({
-//      method: 'UPDATE',
-//      url: '/private/updateIntention',
-//      params: { id: updateId }
-//    }).then(function(response) {
-//      console.log(response);
-//      return response;
-//    });
-// };
 
 this.updateIntentions = function(){
-  console.log("in update intentions on");
+  console.log("in update intentions on service");
   return $http({
     method: 'GET',
     url: '/private/allIntentions'
