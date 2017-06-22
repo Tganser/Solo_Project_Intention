@@ -1,3 +1,9 @@
+/** This model outlines how the app saves users' goals
+ * (intentions) to the mongoDB database
+
+* @module models/user
+*/
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 

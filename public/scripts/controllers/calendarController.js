@@ -1,3 +1,7 @@
+/** Controller 
+*
+*/
+
 googleAuthApp.controller('CalendarController', function ($http) {
   console.log('loaded CC');
   var _this = this;

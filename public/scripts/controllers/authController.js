@@ -1,3 +1,7 @@
+/** Authentication Controller: 
+*
+*/
+
 googleAuthApp.controller('AuthController', function (AuthFactory) {
   var _this = this;
   var authFactory = AuthFactory;
