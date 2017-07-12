@@ -26,7 +26,7 @@ database();
  * @see {@link https://www.npmjs.com/package/express-session}
  */
 app.use(session({
-  secret: configs.sessionVars.secret,
+  secret: process.env.SECRET,
   key: 'user',
   resave: 'true',
   saveUninitialized: false,

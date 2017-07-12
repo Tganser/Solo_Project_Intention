@@ -38,9 +38,9 @@ passport.deserializeUser(function (id, done) {
 /** ---------- PASSPORT STRATEGY DEFINITION ---------- **/
 passport.use('google', new GoogleStrategy({
   // identify ourselves to Google and request Google user data
-  clientID: config.googleAuth.clientId,
-  clientSecret: config.googleAuth.clientSecret,
-  callbackURL: config.googleAuth.callbackUrl,
+  clientID: process.env.CLIENTID,
+  clientSecret: process.env.CLIENT_SECRET,
+  callbackURL: process.env.CALLBACKURL,
 }, function (token, refreshToken, profile, done) {
   // Google has responded
 
