@@ -1,4 +1,4 @@
-#Intention
+# Intention
 
 Intention: a Google Calendar dashboard application to visualize calendar data and highlight trends to support analysis. Intention also allows the user to create goals (Intentions) and add them to their schedule.
 
