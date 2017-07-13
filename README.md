@@ -1,4 +1,63 @@
-# MEAN Stack Google Authentication
+#Intention
+
+Intention: a Google Calendar dashboard application to visualize calendar data and highlight trends to support analysis. Intention also allows the user to create goals (Intentions) and add them to their schedule.
+
+https://intentiontessa.herokuapp.com/#/login
+
+<!-- ## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system. -->
+
+### Prerequisites
+
+<!-- ```
+npm install twilio --save
+npm install angular --save
+npm install angular-route --save
+npm install angular-material --save
+npm install angular-animate --save
+npm install angular-aria --save
+npm install grunt --save-dev
+npm install grunt-contrib-uglify --save-dev
+npm install grunt-contrib-copy --save-dev
+
+``` -->
+
+
+## Deployment
+
+Deployed with Heroku
+
+## Built With
+
+- HTML5
+- CSS3
+- JavaScript
+- AngularJS
+- Google OAuth
+- Mongoose
+- MongoDB
+- ExpressJS
+- Node.js
+- Heroku
+
+Version:
+---
+
+1.0.0
+
+Author:
+----
+
+Tessa Ganser
+
+Acknowledgments:
+-----
+
+Our instructors at Prime Digital Academy: Millie Walsh, Huck Brock, Luke Schlangen, Antoinette Smith
+
+
+<!-- # MEAN Stack Google Authentication
 An update to the "Easy Node Authentication:Google" tutorial on [scotch.io]("https://scotch.io/tutorials/easy-node-authentication-google"). Uses the file/app structure most commonly used by Prime students and makes use of the Express Router module for routing.
 
 # Customization
@@ -88,4 +147,4 @@ All client-side files are in the `public` directory.
 * `vendors` has all of our third-party libraries
 * `views` has our index.html and `templates`
   * `login.html` displays log-in button if user not logged in
-  * `calendar.html` displays a message that confirms or denies that you are logged in
+  * `calendar.html` displays a message that confirms or denies that you are logged in -->
