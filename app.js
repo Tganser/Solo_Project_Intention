@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 /** ---------- REQUIRE CUSTOM APP MODULES ---------- **/
 var passport = require('./auth/passport');
-var configs = require('./config/auth');
+// var configs = require('./config/auth');
 var index = require('./routes/index');
 var auth = require('./routes/auth');
 var isLoggedIn = require('./utils/auth');
