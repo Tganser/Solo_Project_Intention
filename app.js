@@ -48,6 +48,6 @@ app.use('/private', isLoggedIn, private);
 app.use('/', index);
 
 /** ---------- SERVER START ---------- **/
-app.listen(3000, function () {
+app.listen(process.env.PORT, function () {
   console.log('Now running on port ', 3000);
 });
